@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load static %}
+    <!--<link rel="stylesheet" type="text/css" href="main.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'course/main.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="uppercontainer">
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <h1>Add a new course</h1>
+        <form action="/course/process/" method="post">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="course_name">Course Name:</label>
+                <input type="text" class="form-control" name="course_name">
+            </div>
+            <div class="form-group">
+                <label for="teacher">Teacher:</label>
+                <input type="text" class="form-control" name="teacher">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea rows="4" class="form-control" name="description"></textarea>
+            </div>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+    <h1>Courses</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Course Name</th>
+                <th>Instructor</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for class in classes %}
+            <tr>
+                <td>{{ class.id }}</td>
+                <td>{{ class.name }}</td>
+                <td>{{ class.teacher }}</td>
+                <td>{{ class.description }}</td>
+                <td>{{ class.created_at }}</td>
+                <td><a href="/course/delete/{{ class.id }}">Remove</a></td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

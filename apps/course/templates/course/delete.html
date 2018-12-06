@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load static %}
+    <!--<link rel="stylesheet" type="text/css" href="main.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'courses/main.css' %}">
+</head>
+<body>
+<div class="container">
+    <h2>Are you sure you want to delete the following course?</h2>
+    <table class="table">
+        <tr>
+            <td>Name:</td>
+            <td>{{ name }}</td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td>{{ desc }}</td>
+        </tr>
+    </table>
+    <a href="/course/deleted/{{ id }}" class="btn btn-danger">Yes! I want to delete this</a>
+    <a href="/course/index/" class="btn">No</a>
+</div>
+</body>
+</html>

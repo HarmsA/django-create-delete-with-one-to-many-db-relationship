@@ -1,0 +1,27 @@
+.container {
+    width: 80%;
+}
+.uppercontainer {
+    width: 60%;
+}
+input.form-control {
+    /*width: 80%;*/
+}
+table {
+    table-layout: fixed;
+    display: inline-block;
+    overflow: auto;
+    height: 200px;
+    width: 100%;
+}
+/*table tbody {*/
+
+/*}*/
+/*thead tr {*/
+    /*display: inline-block;*/
+    /*width: 100%;*/
+/*}*/
+.table tr td{
+
+    padding: 5;
+}
